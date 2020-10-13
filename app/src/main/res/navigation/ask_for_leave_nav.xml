@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/startAskFragment">
+    <fragment
+        android:id="@+id/startAskFragment"
+        android:name="com.neuqer.askforleave.ask_for_leave.list.StartAskFragment"
+        android:label="fragment_start_ask"
+        tools:layout="@layout/fragment_start_ask" >
+        <action
+            android:id="@+id/action_startAskFragment_to_leaveDetailFragment"
+            app:destination="@id/leaveDetailFragment" />
+        <action
+            android:id="@+id/action_startAskFragment_to_createLeaveFragment"
+            app:destination="@id/createLeaveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/leaveDetailFragment"
+        android:name="com.neuqer.askforleave.ask_for_leave.detail.LeaveDetailFragment"
+        android:label="fragment_leave_detail"
+        tools:layout="@layout/fragment_leave_detail" />
+    <fragment
+        android:id="@+id/createLeaveFragment"
+        android:name="com.neuqer.askforleave.ask_for_leave.create.CreateLeaveFragment"
+        android:label="fragment_create_leave"
+        tools:layout="@layout/fragment_create_leave" />
+</navigation>

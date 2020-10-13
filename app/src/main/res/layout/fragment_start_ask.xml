@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ask_for_leave.list.StartAskFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/start_ask_relative_toolbar"
+                android:background="#fff"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="48dp">
+                <ImageView
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_ask_for_leave_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"/>
+                <ImageView
+                    android:id="@+id/start_ask_img_back"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/ic_back"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_marginEnd="16dp"
+                    android:text="反馈"
+                    android:textColor="#00dffc"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/start_ask_relative_ask_why"
+                app:layout_constraintTop_toBottomOf="@id/start_ask_relative_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:background="#a1bad0">
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/start_ask_txt_why"
+                    android:src="@drawable/ic_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:id="@+id/start_ask_txt_why"
+                    android:text="为何不能请假?"
+                    android:textColor="#fff"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/start_ask_txt_why"
+                    android:src="@drawable/ic_arraw_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/start_ask_recyclerview"
+                app:layout_constraintTop_toBottomOf="@id/start_ask_relative_ask_why"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_ask_for_leave"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+            <RelativeLayout
+                android:id="@+id/start_ask_btn_start"
+                android:background="#0080ff"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="44dp">
+                <TextView
+                    android:text="我要请假"
+                    android:textSize="16sp"
+                    android:textColor="#fff"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</layout>
