@@ -30,6 +30,8 @@ class LeaveDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val item = arguments?.get("ask_for_leave_item") as AskForLeaveData
+        viewModel.startDate.value = item.startDate
+        viewModel.endDate.value = item.endDate
         viewModel.startTime.value = "${item.startDate} ${item.startTime}"
         viewModel.endTime.value = "${item.endDate} ${item.endTime}"
         viewModel.reason.value = item.reason

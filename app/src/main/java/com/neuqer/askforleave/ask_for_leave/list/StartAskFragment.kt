@@ -1,28 +1,27 @@
 package com.neuqer.askforleave.ask_for_leave.list
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.ListAdapter
 import com.neuqer.askforleave.R
 import com.neuqer.askforleave.data.AskForLeaveData
 import com.neuqer.askforleave.databinding.FragmentStartAskBinding
 import com.neuqer.askforleave.global.getVMFactory
-import java.util.*
-import java.util.stream.Collectors
 
 
 class StartAskFragment : Fragment() {
 
     lateinit var viewDataBinding: FragmentStartAskBinding
     val viewModel by viewModels<StartAskViewModel> { getVMFactory() }
+    lateinit var dialog: AlertDialog
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,6 +36,7 @@ class StartAskFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 //        viewModel.refresh()
+        initDialog()
         viewDataBinding.startAskBtnStart.setOnClickListener {
             findNavController().navigate(R.id.action_startAskFragment_to_createLeaveFragment)
         }
@@ -53,7 +53,10 @@ class StartAskFragment : Fragment() {
             }
 
             override fun onLongClick(view: View, item: AskForLeaveData): Boolean {
-                Toast.makeText(activity, "长按", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity, "长按", Toast.LENGTH_SHORT).show()
+
+                viewModel.tempSelectedStr = item.askId
+                dialog.show()
                 return true
             }
 
@@ -63,5 +66,20 @@ class StartAskFragment : Fragment() {
             Observer<List<AskForLeaveData>> {
                 (viewDataBinding.startAskRecyclerview.adapter as StartAskListAdapter).submitList(it)
             })
+    }
+
+    private fun initDialog() {
+         dialog = activity.let {
+            AlertDialog.Builder(it).setTitle("删除") //设置对话框标题
+                .setMessage("确定要删除？") //设置显示的内容
+                .setPositiveButton("确定") { _, _ ->
+                    delete()
+                }.setNegativeButton("取消") { _, _ ->
+                }.create()
+        }
+    }
+
+    private fun delete() {
+        viewModel.deleteItem()
     }
 }

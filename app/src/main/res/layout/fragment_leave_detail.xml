@@ -424,7 +424,7 @@
                                 android:id="@+id/detail_review_time1"
                                 android:layout_width="wrap_content"
                                 android:layout_alignParentEnd="true"
-                                android:text="09-08"
+                                android:text="@{viewModel.startDate}"
                                 android:layout_height="wrap_content"/>
                         </RelativeLayout>
                         <View
@@ -460,7 +460,7 @@
                                 android:id="@+id/detail_review_time2"
                                 android:layout_width="wrap_content"
                                 android:layout_alignParentEnd="true"
-                                android:text="09-08"
+                                android:text="@{viewModel.endDate}"
                                 android:layout_height="wrap_content"/>
                         </RelativeLayout>
 

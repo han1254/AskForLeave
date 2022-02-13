@@ -12,6 +12,10 @@ import com.neuqer.askforleave.data.AskForLeaveData
  */
 class LeaveDetailViewModel: ViewModel() {
 
+    val startDate: MutableLiveData<String> = MutableLiveData()
+
+    val endDate: MutableLiveData<String> = MutableLiveData()
+
     val startTime: MutableLiveData<String> = MutableLiveData()
 
     val endTime: MutableLiveData<String> = MutableLiveData()

@@ -14,10 +14,13 @@ import kotlinx.coroutines.launch
 class StartAskViewModel(private val repo: IAskForLeaveRepository): ViewModel() {
 
     var items: LiveData<List<AskForLeaveData>> = repo.getItems().distinctUntilChanged()
+    var tempSelectedStr: String = ""
 
-    fun refresh() {
-        viewModelScope.launch {
-            (items as MutableLiveData).value = repo.getItems().value
+    fun deleteItem() {
+        if (tempSelectedStr.isNotEmpty()) {
+            viewModelScope.launch {
+                repo.deleteItem(tempSelectedStr)
+            }
         }
     }
 

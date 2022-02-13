@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ExpandableListView
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -50,11 +51,11 @@ class StartAskListViewHolder(private val itemBinding: ItemAskForLeaveBinding): R
 
 class StartAskListDiffUtil: DiffUtil.ItemCallback<AskForLeaveData>() {
     override fun areItemsTheSame(oldItem: AskForLeaveData, newItem: AskForLeaveData): Boolean {
-        return oldItem.askId == newItem.askId
+        return oldItem.positionId == newItem.positionId
     }
 
     override fun areContentsTheSame(oldItem: AskForLeaveData, newItem: AskForLeaveData): Boolean {
-        return oldItem.askId == newItem.askId
+        return oldItem == newItem
     }
 
 }

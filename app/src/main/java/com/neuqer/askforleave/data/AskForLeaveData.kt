@@ -39,10 +39,12 @@ data class AskForLeaveData @JvmOverloads constructor(
     @ColumnInfo(name = "reason")
     val reason: String,
 
-    @PrimaryKey
     @ColumnInfo(name = "askId")
     val askId: String = UUID.randomUUID().toString()
 ): Serializable {
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "positionId")
+    var positionId: Int ?= null
     val combinationTime: String
         get() = "$startDate $startTime ~ $endDate $endTime($timeLength)"
 }

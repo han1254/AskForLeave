@@ -23,8 +23,6 @@ class AskForLeaveRepositoryImpl(private val dataSource: IAskForLeaveDataSource)
         reason: String
     ) {
 
-
-
         val item = AskForLeaveData(
             startDate = startDate,
             endDate = endDate,
@@ -41,4 +39,5 @@ class AskForLeaveRepositoryImpl(private val dataSource: IAskForLeaveDataSource)
     override fun getItems(): LiveData<List<AskForLeaveData>> = dataSource.getItems()
 
     override suspend fun deleteItem(id: String) = dataSource.deleteItem(id)
+
 }
